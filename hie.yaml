@@ -1,0 +1,14 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "haskell-simple-calculator:lib"
+
+    - path: "./app/Main.hs"
+      component: "haskell-simple-calculator:exe:haskell-simple-calculator-exe"
+
+    - path: "./app/Paths_haskell-simple-calculator.hs"
+      component: "haskell-simple-calculator:exe:haskell-simple-calculator-exe"
+
+    - path: "./test"
+      component: "haskell-simple-calculator:test:haskell-simple-calculator-test"
+
