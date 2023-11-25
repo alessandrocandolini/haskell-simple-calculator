@@ -9,9 +9,10 @@ dependencies:
 - async
 - mtl
 - optparse-applicative
-- optparse-generic
 - aeson
 - neat-interpolation
+- data-fix
+- recursion-schemes
 
 default-extensions:
 - OverloadedStrings
