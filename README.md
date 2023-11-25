@@ -1,3 +1,5 @@
+[![CI](https://github.com/alessandrocandolini/haskell-simple-calculator/actions/workflows/ci.yml/badge.svg)](https://github.com/alessandrocandolini/haskell-simple-calculator/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/alessandrocandolini/haskell-simple-calculator/graph/badge.svg?token=WZHpJierg1)](https://codecov.io/gh/alessandrocandolini/haskell-simple-calculator)
+
 # haskell-simple-calculator
 
 ## How to build and run locally
