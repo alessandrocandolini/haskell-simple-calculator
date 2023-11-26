@@ -16,3 +16,9 @@ spec = describe "Calculator" $ do
 
      it "simple pretty" $
         pretty example1 `shouldBe` "(((2+3)*4)+5)"
+
+     it "simple pretty" $ let
+        original :: Ast
+        original = add (multiply (add (value 0) (value 2)) (value 1)) (value 5)
+       in
+        simplify original `shouldBe` add (value 2) (value 5)

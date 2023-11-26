@@ -14,6 +14,7 @@ dependencies:
 - data-fix
 - recursion-schemes
 - prettyprinter
+- deriving-compat
 
 default-extensions:
 - OverloadedStrings
