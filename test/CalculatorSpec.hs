@@ -4,14 +4,15 @@ import Calculator
 import Test.Hspec
 import Test.Hspec.QuickCheck
 import Test.QuickCheck.Property
-import Options.Applicative (ParserResult(Success))
-import Options.Applicative (ParserResult(Failure))
+
+example1 :: Ast
+example1 = add (multiply (add (value 2) (value 3)) (value 4)) (value 5)
 
 spec :: Spec
 spec = describe "Calculator" $ do
 
-     it "1 is 1" $
-        1 `shouldBe` 1
+     it "simple evaluate" $
+        evaluate example1 `shouldBe` 25
 
-     prop "is able to parse subcommand (verbose flag off)" $
-        \as -> (reverse . reverse) as == (as :: [Int])
+     it "simple pretty" $
+        pretty example1 `shouldBe` "(((2+3)*4)+5)"

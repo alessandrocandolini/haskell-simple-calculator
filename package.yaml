@@ -13,6 +13,7 @@ dependencies:
 - neat-interpolation
 - data-fix
 - recursion-schemes
+- prettyprinter
 
 default-extensions:
 - OverloadedStrings
