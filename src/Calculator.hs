@@ -3,9 +3,18 @@
 
 module Calculator where
 
+import Control.Applicative (Alternative (many))
+import Data.Char (isSpace)
 import Data.Eq.Deriving
 import Data.Fix (Fix (Fix))
-import Data.Functor.Foldable (cata)
+import Data.Functor (($>))
+import Data.Functor.Foldable (cata, ana)
+import Data.Void (Void)
+import Options.Applicative (Alternative ((<|>)))
+import Text.Megaparsec (Parsec, parse)
+import Text.Megaparsec.Char
+import Text.Megaparsec.Char.Lexer (decimal)
+import Text.Megaparsec.Error (ParseErrorBundle)
 import Text.Show.Deriving
 
 data AstF a
@@ -19,6 +28,7 @@ type Ast = Fix AstF
 deriveShow1 ''AstF
 deriveEq1 ''AstF
 
+-- would require FlexibleInstances
 -- instance Show (Fix AstF) where
 -- show = pretty
 
@@ -59,3 +69,26 @@ simplifyF a = Fix a
 
 simplify :: Ast -> Ast
 simplify = cata simplifyF
+
+data Token = Open | Close | Plus | Times | Val Int deriving (Eq, Show)
+
+type Parser = Parsec Void String
+type ParserError = ParseErrorBundle String Void
+
+tokenP :: Parser Token
+tokenP = char '(' $> Open <|> char ')' $> Close <|> char '+' $> Plus <|> char '*' $> Times <|> (Val <$> decimal)
+
+tokensP :: Parser [Token]
+tokensP = many tokenP
+
+removeSpaces :: String -> String
+removeSpaces = filter (not . isSpace)
+
+parseTokens :: String -> Either ParserError [Token]
+parseTokens = parse tokensP "" . removeSpaces
+
+parseAstF :: [Token] -> (AstF a)
+parseAstF = undefined
+
+parseAst :: [Token] -> Ast
+parseAst = ana parseAstF

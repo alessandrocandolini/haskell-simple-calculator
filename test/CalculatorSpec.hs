@@ -8,6 +8,12 @@ import Test.QuickCheck.Property
 example1 :: Ast
 example1 = add (multiply (add (value 2) (value 3)) (value 4)) (value 5)
 
+printed1 :: String
+printed1 = "(((2+3)*4)+5)"
+
+tokenised1 :: [Token]
+tokenised1 = [Open, Open, Open, Val 2, Plus, Val 3, Close, Times, Val 4, Close, Plus, Val 5, Close]
+
 spec :: Spec
 spec = describe "Calculator" $ do
   it "simple evaluate"
@@ -37,4 +43,11 @@ spec = describe "Calculator" $ do
         original :: Ast
         original = add (multiply (add (value 1) (value 0)) (value 5)) (value 0)
        in
-        simplify original `shouldBe` (value 5)
+        simplify original `shouldBe` value 5
+
+  it "parse tokens"
+    $ parseTokens printed1
+    `shouldBe` Right tokenised1
+
+  xit "parse ast successfully"
+    $ parseAst tokenised1 `shouldBe` Just example1

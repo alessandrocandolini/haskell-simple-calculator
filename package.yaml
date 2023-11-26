@@ -15,6 +15,7 @@ dependencies:
 - recursion-schemes
 - prettyprinter
 - deriving-compat
+- megaparsec
 
 default-extensions:
 - OverloadedStrings
