@@ -48,6 +48,3 @@ spec = describe "Calculator" $ do
   it "parse tokens"
     $ parseTokens printed1
     `shouldBe` Right tokenised1
-
-  xit "parse ast successfully"
-    $ parseAst tokenised1 `shouldBe` Just example1
