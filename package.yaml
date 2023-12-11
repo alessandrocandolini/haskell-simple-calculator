@@ -16,6 +16,7 @@ dependencies:
 - prettyprinter
 - deriving-compat
 - megaparsec
+- witherable
 
 default-extensions:
 - OverloadedStrings
