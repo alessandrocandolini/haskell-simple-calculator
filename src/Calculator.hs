@@ -21,7 +21,7 @@ data AstF a
   = ValueF Int
   | AddF a a
   | MultipleF a a
-  deriving (Eq, Functor)
+  deriving (Eq, Show, Functor)
 
 type Ast = Fix AstF
 
