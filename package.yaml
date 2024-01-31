@@ -15,8 +15,8 @@ dependencies:
 - recursion-schemes
 - prettyprinter
 - deriving-compat
-- megaparsec
 - witherable
+- template-haskell
 
 default-extensions:
 - OverloadedStrings

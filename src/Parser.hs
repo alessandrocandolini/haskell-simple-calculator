@@ -13,9 +13,7 @@ newtype ParserT s m a = Parser
 {-
 Alternatively
 
-newtype ParserT m s a = ParserT {
-   unparse :: StateT s m a
-   } deriving (Functor, Applicative, Monad, Alternative, MonadPlus)
+type ParserT s m a = StateT s m a
 
 -}
 
